@@ -32,6 +32,7 @@ body {
 #product-slider {
   margin-top: 2.5rem;    /* War 1rem → schiebt den Slider runter */
   padding-top: 1.5rem;   /* Erzeugt einen sicheren Abstand zum Header */
+  padding-bottom: 55px; /* ← WICHTIG: Sichert Platz für die Auswahlpunkte */
   position: relative;
   z-index: 1;
 }
