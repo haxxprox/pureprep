@@ -64,3 +64,67 @@ header h1 { font-size: 2rem; letter-spacing: -0.5px; }
 
 /* Fehler/Ladezustand */
 #product-slider p { color: #50ff50; text-align: center; padding: 3rem; font-size: 1.1rem; }
+
+/* ── Navbar & Dropdown ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-toggle {
+  background: none; border: none; cursor: pointer;
+  display: flex; flex-direction: column; gap: 5px; padding: 0.5rem;
+}
+
+.bar {
+  width: 25px; height: 3px; background: var(--text-primary);
+  border-radius: 2px; transition: all 0.3s ease;
+}
+
+.nav-toggle.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active .bar:nth-child(2) { opacity: 0; }
+.nav-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.dropdown-menu {
+  position: fixed;
+  top: 60px; right: 1.5rem;
+  width: min(280px, 90vw);
+  max-height: 0; overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px var(--shadow);
+  transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 0; visibility: hidden; z-index: 999;
+}
+
+.dropdown-menu.open {
+  max-height: 70vh; /* Scrollbar erscheint automatisch bei Überlauf */
+  opacity: 1; visibility: visible;
+}
+
+.nav-link {
+  display: block; padding: 0.9rem 1.2rem;
+  color: var(--text-primary); text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s, color 0.2s;
+}
+.nav-link:last-child { border-bottom: none; }
+.nav-link:hover { background: rgba(47, 129, 247, 0.15); color: var(--accent); }
+
+/* Custom Scrollbar (Dark) */
+.dropdown-menu::-webkit-scrollbar { width: 6px; }
+.dropdown-menu::-webkit-scrollbar-track { background: var(--bg-primary); }
+.dropdown-menu::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.dropdown-menu::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+.dropdown-menu { scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-primary); }
+
+/* Body-Padding für fixe Navbar */
+body { padding-top: 80px; }
