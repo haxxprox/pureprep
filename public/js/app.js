@@ -26,15 +26,20 @@ async function loadProducts() {
       swiperWrapper.appendChild(slide);
     });
 
+    // 👇 HIER WIRD DER BLOCK ERSETZT 👇
     if (!swiperContainer.classList.contains('swiper-initialized')) {
       new Swiper(swiperContainer, {
         slidesPerView: 1,
-        spaceBetween: 20,
-        autoHeight: false, // ← Hier rein (innerhalb der Swiper-Optionen)
+        spaceBetween: 10,
+        autoHeight: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
         breakpoints: {
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-          1280: { slidesPerView: 4 }
+          640: { slidesPerView: 2, spaceBetween: 14 },
+          1024: { slidesPerView: 3, spaceBetween: 18 },
+          1280: { slidesPerView: 4, spaceBetween: 22 }
         }
       });
     }
