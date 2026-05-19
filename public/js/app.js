@@ -43,3 +43,34 @@ async function loadProducts() {
 }
 
 document.addEventListener('DOMContentLoaded', loadProducts);
+
+// ── Navbar Dropdown Logic ──
+const navToggle = document.querySelector('.nav-toggle');
+const navDropdown = document.getElementById('navDropdown');
+
+function toggleNav() {
+  const isOpen = navDropdown.classList.toggle('open');
+  navToggle.classList.toggle('active');
+  navToggle.setAttribute('aria-expanded', isOpen);
+}
+
+navToggle.addEventListener('click', toggleNav);
+
+// Schließen bei Klick außerhalb
+document.addEventListener('click', (e) => {
+  if (!navToggle.contains(e.target) && !navDropdown.contains(e.target)) {
+    navToggle.classList.remove('active');
+    navDropdown.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Schließen mit ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    navToggle.classList.remove('active');
+    navDropdown.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.focus();
+  }
+});
