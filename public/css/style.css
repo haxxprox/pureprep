@@ -128,3 +128,121 @@ header h1 { font-size: 2rem; letter-spacing: -0.5px; }
 
 /* Body-Padding für fixe Navbar */
 body { padding-top: 80px; }
+
+/* ── Tab Navigation ── */
+.tab-navigation {
+  margin-top: 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.tab-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-item {
+  position: relative;
+}
+
+.tab-btn {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.tab-btn:hover,
+.tab-item:hover .tab-btn,
+.tab-item.active .tab-btn {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(47, 129, 247, 0.3);
+}
+
+.tab-panel {
+  position: absolute;
+  top: calc(100% - 12px); /* Überlappt in Header-Bereich */
+  left: 0;
+  width: 260px;
+  max-height: 0;
+  overflow-y: auto;
+  background: rgba(22, 27, 34, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  padding: 0.5rem;
+  pointer-events: none;
+}
+
+.tab-item:hover .tab-panel,
+.tab-item.active .tab-panel {
+  max-height: 400px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Pfeil nach oben */
+.tab-panel::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  border: 8px solid transparent;
+  border-bottom-color: rgba(22, 27, 34, 0.95);
+}
+
+/* Scrollbar (Dark) */
+.tab-panel::-webkit-scrollbar { width: 6px; }
+.tab-panel::-webkit-scrollbar-track { background: var(--bg-primary); }
+.tab-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.tab-panel::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+.tab-panel { scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-primary); }
+
+/* Links im Panel */
+.tab-link {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  font-size: 0.95rem;
+}
+
+.tab-link:hover {
+  background: rgba(47, 129, 247, 0.15);
+  color: var(--accent);
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+  .tab-list { flex-direction: column; gap: 0.8rem; }
+  .tab-panel {
+    position: relative;
+    top: 0;
+    width: 100%;
+    max-height: 300px;
+    margin-top: 0.5rem;
+    transform: none;
+  }
+  .tab-item:hover .tab-panel,
+  .tab-item.active .tab-panel {
+    transform: none;
+  }
+}
