@@ -26,16 +26,30 @@ async function loadProducts() {
       swiperWrapper.appendChild(slide);
     });
 
-    // 👇 HIER WIRD DER BLOCK ERSETZT 👇
+    // 👇 Swiper Initialisierung mit Loop, Autoplay & Observer
     if (!swiperContainer.classList.contains('swiper-initialized')) {
       new Swiper(swiperContainer, {
         slidesPerView: 1,
         spaceBetween: 10,
-        autoHeight: false,
+        
+        // 🔄 Loop & Autoplay
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+
+        // 🧭 Navigation
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
+
+        // ⚡ Wichtig für dynamisch geladene Inhalte (fetch)
+        observer: true,
+        observeParents: true,
+
         breakpoints: {
           640: { slidesPerView: 2, spaceBetween: 14 },
           1024: { slidesPerView: 3, spaceBetween: 18 },
