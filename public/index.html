@@ -2,12 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PurePreP</title>
-  <style>
-    :root { --safe-bottom: env(safe-area-inset-bottom, 0px); }
-    body { padding-bottom: var(--safe-bottom); }
-  </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -16,12 +12,14 @@
 
   <header class="shop-header">
     <h1>🛒 PurePreP</h1>
+    <!-- Neue Nav-Actions für Warenkorb & Login -->
     <div class="nav-actions">
       <button class="cart-btn" id="cartToggle" aria-label="Warenkorb">🛒<span class="cart-badge" id="cartBadge">0</span></button>
       <button class="auth-btn" id="authToggle" aria-label="Konto">👤</button>
     </div>
   </header>
 
+  <!-- Swiper Container -->
   <main id="product-slider" class="swiper mySwiper">
     <div class="swiper-wrapper" id="swiper-wrapper"></div>
     <div class="swiper-pagination"></div>
@@ -29,6 +27,7 @@
     <div class="swiper-button-next"></div>
   </main>
 
+  <!-- Tab Navigation -->
   <nav class="tab-navigation" aria-label="Hauptnavigation">
     <div class="tab-list">
       <div class="tab-item" data-tab="products">
@@ -79,6 +78,7 @@
     </div>
   </nav>
 
+  <!-- Warenkorb Sidebar -->
   <div class="cart-overlay" id="cartOverlay"></div>
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
@@ -95,6 +95,7 @@
     </div>
   </div>
 
+  <!-- Kunden-Login / Registrierung Modal -->
   <div class="auth-overlay" id="authOverlay"></div>
   <div class="auth-modal" id="authModal">
     <div class="auth-container">
@@ -123,6 +124,7 @@
     </div>
   </div>
 
+  <!-- Benutzerprofil (wird nach Login angezeigt) -->
   <div class="user-profile" id="userProfile" style="display:none;">
     <span id="userName">Gast</span>
     <button class="logout-btn" id="logoutBtn">Abmelden</button>
