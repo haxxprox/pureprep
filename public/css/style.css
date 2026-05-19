@@ -20,24 +20,24 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* 1. Header fixieren & Abstand vergrößern */
+/* Header */
 .shop-header {
-  margin-bottom: 3.5rem; /* War 2.5rem → schafft Platz nach unten */
+  margin-bottom: 3.5rem;
   text-align: center;
   position: relative;
-  z-index: 10; /* Bleibt immer visuell über dem Slider */
+  z-index: 10;
 }
 
-/* 2. Slider-Container mit oberem Puffer */
+/* Slider Container */
 #product-slider {
-  margin-top: 2.5rem;    /* War 1rem → schiebt den Slider runter */
-  padding-top: 1.5rem;   /* Erzeugt einen sicheren Abstand zum Header */
-  padding-bottom: 55px; /* ← WICHTIG: Sichert Platz für die Auswahlpunkte */
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 60px;
   position: relative;
   z-index: 1;
 }
 
-/* Paginierung explizit fixieren */
+/* Paginierung fixieren */
 .swiper-pagination {
   bottom: 14px !important;
   left: 50% !important;
@@ -45,25 +45,40 @@ body {
   width: auto !important;
 }
 
-.product-card { 
-  background: var(--bg-card); 
-  padding: 1.5rem; 
-  border-radius: 12px; 
+/* Swiper Slide & Karte */
+.swiper-slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.product-card {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  max-height: 300px;
+  overflow: hidden;
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
   border: 1px solid var(--border);
   box-shadow: 0 4px 12px var(--shadow);
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0 auto;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
+
 .product-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.6);
   border-color: var(--accent);
 }
+
 .product-card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; color: var(--text-primary); }
 .product-card .price { color: var(--accent); font-weight: 600; margin-bottom: 1rem; font-size: 1.2rem; }
+
 .product-card button { 
   background: var(--accent); color: #fff; border: none; padding: 0.6rem 1.2rem; 
   border-radius: 8px; cursor: pointer; align-self: flex-start;
@@ -72,13 +87,37 @@ body {
 .product-card button:hover { background: var(--accent-hover); transform: scale(1.03); }
 .product-card button:active { transform: scale(0.98); }
 
+/* Swiper Controls */
 .swiper-button-next, .swiper-button-prev { color: var(--accent); }
 .swiper-button-next::after, .swiper-button-prev::after { font-size: 1.2rem; }
 .swiper-pagination { color: var(--text-secondary); }
 .swiper-pagination-bullet { background: var(--text-secondary); opacity: 0.4; width: 8px; height: 8px; }
 .swiper-pagination-bullet-active { background: var(--accent); opacity: 1; width: 20px; border-radius: 4px; transition: all 0.2s ease; }
 
-/* ── Tab Navigation ── */
+/* Produktbilder */
+.card-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 1rem;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-image img { transform: scale(1.05); }
+
+/* Tab Navigation */
 .tab-navigation { margin-top: 3rem; position: relative; z-index: 10; }
 .tab-list { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 .tab-item { position: relative; }
@@ -123,41 +162,15 @@ body {
 }
 .tab-link:hover { background: rgba(47, 129, 247, 0.15); color: var(--accent); }
 
+/* Responsive */
 @media (max-width: 768px) {
   .tab-list { flex-direction: column; gap: 0.8rem; }
   .tab-panel { position: relative; top: 0; width: 100%; max-height: 300px; margin-top: 0.5rem; }
 }
+@media (max-width: 640px) {
+  .card-image { height: 150px; }
+  .product-card { max-width: 280px; }
+}
 
 /* Fehler/Ladezustand */
 #product-slider p { color: #50ff50; text-align: center; padding: 3rem; font-size: 1.1rem; }
-
-/* ── Produktbilder ── */
-.card-image {
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-  border-radius: 8px 8px 0 0;
-  margin-bottom: 1rem;
-  background: var(--bg-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover .card-image img {
-  transform: scale(1.05);
-}
-
-/* Mobile Anpassung */
-@media (max-width: 640px) {
-  .card-image { height: 150px; }
-}
-
