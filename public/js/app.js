@@ -26,36 +26,31 @@ async function loadProducts() {
       swiperWrapper.appendChild(slide);
     });
 
-    // 👇 Swiper Initialisierung mit Loop, Autoplay & Observer
+    // ⚡ Swiper Initialisierung
     if (!swiperContainer.classList.contains('swiper-initialized')) {
-      new Swiper(swiperContainer, {
+      const swiper = new Swiper(swiperContainer, {
         slidesPerView: 1,
-        spaceBetween: 10,
-        
-        // 🔄 Loop & Autoplay
+        spaceBetween: 8, // Reduziert
         loop: true,
+        loopMode: 'flip', // Stabil für dynamische Inhalte
         autoplay: {
           delay: 3000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true
         },
-
-        // 🧭 Navigation
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-
-        // ⚡ Wichtig für dynamisch geladene Inhalte (fetch)
-        observer: true,
-        observeParents: true,
-
         breakpoints: {
-          640: { slidesPerView: 2, spaceBetween: 14 },
-          1024: { slidesPerView: 3, spaceBetween: 18 },
-          1280: { slidesPerView: 4, spaceBetween: 22 }
+          640: { slidesPerView: 2, spaceBetween: 10 },
+          1024: { slidesPerView: 3, spaceBetween: 12 },
+          1280: { slidesPerView: 4, spaceBetween: 14 }
         }
       });
+
+      // WICHTIG: Nach dynamischem Content muss Swiper neu berechnet werden
+      setTimeout(() => swiper.update(), 100);
     }
   } catch (err) {
     swiperContainer.innerHTML = `<p style="color:#f85149; text-align:center; padding:3rem;">Fehler beim Laden: ${err.message}</p>`;
