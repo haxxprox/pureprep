@@ -63,4 +63,4 @@ header h1 { font-size: 2rem; letter-spacing: -0.5px; }
 .swiper-pagination-bullet-active { background: var(--accent); opacity: 1; width: 20px; border-radius: 4px; transition: all 0.2s ease; }
 
 /* Fehler/Ladezustand */
-#product-slider p { color: #f85149; text-align: center; padding: 3rem; font-size: 1.1rem; }
+#product-slider p { color: #ffffff; text-align: center; padding: 3rem; font-size: 1.1rem; }
