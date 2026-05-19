@@ -130,3 +130,34 @@ body {
 
 /* Fehler/Ladezustand */
 #product-slider p { color: #50ff50; text-align: center; padding: 3rem; font-size: 1.1rem; }
+
+/* ── Produktbilder ── */
+.card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 1rem;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Mobile Anpassung */
+@media (max-width: 640px) {
+  .card-image { height: 150px; }
+}
+
