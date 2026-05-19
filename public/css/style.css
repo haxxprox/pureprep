@@ -36,6 +36,14 @@ body {
   z-index: 1;
 }
 
+/* Paginierung explizit fixieren */
+.swiper-pagination {
+  bottom: 14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+}
+
 .product-card { 
   background: var(--bg-card); 
   padding: 1.5rem; 
