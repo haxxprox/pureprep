@@ -20,7 +20,6 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Header */
 .shop-header {
   margin-bottom: 3.5rem;
   text-align: center;
@@ -33,65 +32,18 @@ body {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   padding-bottom: 60px;
-  position: relative; /* ← Wichtig für Pfeil-Positionierung */
-  overflow: visible;  /* ← Verhindert Abschneiden der Pfeile */
+  position: relative;
+  overflow: hidden; /* Standard für Slider-Layout */
   z-index: 1;
 }
 
-/* Paginierung fixieren */
+/* Paginierung */
 .swiper-pagination {
   bottom: 14px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: auto !important;
 }
-
-/* Swiper Slide & Karte */
-.swiper-slide {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  /* width: 100% !important; ENTFERNT → Swiper setzt die Breite dynamisch */
-}
-
-/* Pfeile sichtbar & klickbar machen */
-.swiper-button-next,
-.swiper-button-prev {
-  position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 36px !important;
-  height: 36px !important;
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 50% !important;
-  box-shadow: 0 2px 10px var(--shadow) !important;
-  z-index: 10 !important;
-  transition: all 0.2s ease !important;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}
-.swiper-button-next { right: 10px !important; }
-.swiper-button-prev { left: 10px !important; }
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  content: '' !important; /* ← Stellt Swiper-Icon sicher */
-  font-size: 16px !important;
-  font-weight: bold !important;
-  color: var(--accent) !important;
-}
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background: var(--accent) !important;
-}
-.swiper-button-next:hover::after,
-.swiper-button-prev:hover::after {
-  color: #fff !important;
-}
-
-/* Paginierung */
 .swiper-pagination-bullet {
   background: var(--text-secondary) !important;
   opacity: 0.4 !important;
@@ -103,6 +55,13 @@ body {
   opacity: 1 !important;
   width: 20px !important;
   border-radius: 4px !important;
+}
+
+/* Swiper Slide & Karte */
+.swiper-slide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .product-card {
