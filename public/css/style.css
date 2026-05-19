@@ -20,14 +20,13 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-header { margin-bottom: 2.5rem; text-align: center; }
-header h1 { font-size: 2rem; letter-spacing: -0.5px; }
+.shop-header { margin-bottom: 2.5rem; text-align: center; }
+.shop-header h1 { font-size: 2rem; letter-spacing: -0.5px; }
 
-/* Swiper Container */
+/* ── Swiper ── */
 .swiper { width: 100%; padding-bottom: 40px; }
 .swiper-slide { height: auto; }
 
-/* Produktkarte */
 .product-card { 
   background: var(--bg-card); 
   padding: 1.5rem; 
@@ -55,194 +54,61 @@ header h1 { font-size: 2rem; letter-spacing: -0.5px; }
 .product-card button:hover { background: var(--accent-hover); transform: scale(1.03); }
 .product-card button:active { transform: scale(0.98); }
 
-/* Swiper Navigation & Pagination (Dark-optimiert) */
 .swiper-button-next, .swiper-button-prev { color: var(--accent); }
 .swiper-button-next::after, .swiper-button-prev::after { font-size: 1.2rem; }
 .swiper-pagination { color: var(--text-secondary); }
 .swiper-pagination-bullet { background: var(--text-secondary); opacity: 0.4; width: 8px; height: 8px; }
 .swiper-pagination-bullet-active { background: var(--accent); opacity: 1; width: 20px; border-radius: 4px; transition: all 0.2s ease; }
 
-/* Fehler/Ladezustand */
-#product-slider p { color: #50ff50; text-align: center; padding: 3rem; font-size: 1.1rem; }
-
-/* ── Navbar & Dropdown ── */
-.navbar {
-  position: fixed;
-  top: 0; left: 0; width: 100%;
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
-  z-index: 1000;
-  padding: 0.8rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.nav-toggle {
-  background: none; border: none; cursor: pointer;
-  display: flex; flex-direction: column; gap: 5px; padding: 0.5rem;
-}
-
-.bar {
-  width: 25px; height: 3px; background: var(--text-primary);
-  border-radius: 2px; transition: all 0.3s ease;
-}
-
-.nav-toggle.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.nav-toggle.active .bar:nth-child(2) { opacity: 0; }
-.nav-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-.dropdown-menu {
-  position: fixed;
-  top: 60px; right: 1.5rem;
-  width: min(280px, 90vw);
-  max-height: 0; overflow-y: auto;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px var(--shadow);
-  transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-  opacity: 0; visibility: hidden; z-index: 999;
-}
-
-.dropdown-menu.open {
-  max-height: 70vh; /* Scrollbar erscheint automatisch bei Überlauf */
-  opacity: 1; visibility: visible;
-}
-
-.nav-link {
-  display: block; padding: 0.9rem 1.2rem;
-  color: var(--text-primary); text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  transition: background 0.2s, color 0.2s;
-}
-.nav-link:last-child { border-bottom: none; }
-.nav-link:hover { background: rgba(47, 129, 247, 0.15); color: var(--accent); }
-
-/* Custom Scrollbar (Dark) */
-.dropdown-menu::-webkit-scrollbar { width: 6px; }
-.dropdown-menu::-webkit-scrollbar-track { background: var(--bg-primary); }
-.dropdown-menu::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-.dropdown-menu::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-.dropdown-menu { scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-primary); }
-
-/* Body-Padding für fixe Navbar */
-body { padding-top: 80px; }
-
 /* ── Tab Navigation ── */
-.tab-navigation {
-  margin-top: 3rem;
-  position: relative;
-  z-index: 10;
-}
-
-.tab-list {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.tab-item {
-  position: relative;
-}
+.tab-navigation { margin-top: 3rem; position: relative; z-index: 10; }
+.tab-list { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.tab-item { position: relative; }
 
 .tab-btn {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  font-family: inherit;
+  background: var(--bg-card); color: var(--text-primary);
+  border: 1px solid var(--border); padding: 0.8rem 1.5rem;
+  border-radius: 8px; cursor: pointer; font-weight: 500;
+  transition: all 0.2s ease; font-family: inherit;
 }
-
-.tab-btn:hover,
-.tab-item:hover .tab-btn,
-.tab-item.active .tab-btn {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(47, 129, 247, 0.3);
+.tab-btn:hover, .tab-item:hover .tab-btn, .tab-item.active .tab-btn {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+  transform: translateY(-2px); box-shadow: 0 4px 12px rgba(47, 129, 247, 0.3);
 }
 
 .tab-panel {
-  position: absolute;
-  top: calc(100% - 12px); /* Überlappt in Header-Bereich */
-  left: 0;
-  width: 260px;
-  max-height: 0;
-  overflow-y: auto;
-  background: rgba(22, 27, 34, 0.95);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  position: absolute; top: calc(100% - 12px); left: 0; width: 260px;
+  max-height: 0; overflow-y: auto;
+  background: rgba(22, 27, 34, 0.95); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 10px;
   box-shadow: 0 12px 32px var(--shadow);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 100;
-  padding: 0.5rem;
-  pointer-events: none;
+  opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100; padding: 0.5rem; pointer-events: none;
 }
-
-.tab-item:hover .tab-panel,
-.tab-item.active .tab-panel {
-  max-height: 400px;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+.tab-item:hover .tab-panel, .tab-item.active .tab-panel {
+  max-height: 400px; opacity: 1; visibility: visible; pointer-events: auto;
 }
-
-/* Pfeil nach oben */
 .tab-panel::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 20px;
-  border: 8px solid transparent;
-  border-bottom-color: rgba(22, 27, 34, 0.95);
+  content: ''; position: absolute; top: -8px; left: 20px;
+  border: 8px solid transparent; border-bottom-color: rgba(22, 27, 34, 0.95);
 }
-
-/* Scrollbar (Dark) */
 .tab-panel::-webkit-scrollbar { width: 6px; }
 .tab-panel::-webkit-scrollbar-track { background: var(--bg-primary); }
 .tab-panel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 .tab-panel::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 .tab-panel { scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-primary); }
 
-/* Links im Panel */
 .tab-link {
-  display: block;
-  padding: 0.7rem 1rem;
-  color: var(--text-primary);
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
+  display: block; padding: 0.7rem 1rem; color: var(--text-primary);
+  text-decoration: none; border-radius: 6px; transition: background 0.2s, color 0.2s;
   font-size: 0.95rem;
 }
+.tab-link:hover { background: rgba(47, 129, 247, 0.15); color: var(--accent); }
 
-.tab-link:hover {
-  background: rgba(47, 129, 247, 0.15);
-  color: var(--accent);
-}
-
-/* Mobile Anpassung */
 @media (max-width: 768px) {
   .tab-list { flex-direction: column; gap: 0.8rem; }
-  .tab-panel {
-    position: relative;
-    top: 0;
-    width: 100%;
-    max-height: 300px;
-    margin-top: 0.5rem;
-    transform: none;
-  }
-  .tab-item:hover .tab-panel,
-  .tab-item.active .tab-panel {
-    transform: none;
-  }
+  .tab-panel { position: relative; top: 0; width: 100%; max-height: 300px; margin-top: 0.5rem; }
 }
+
+/* Fehler/Ladezustand */
+#product-slider p { color: #50ff50; text-align: center; padding: 3rem; font-size: 1.1rem; }
