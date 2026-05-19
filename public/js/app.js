@@ -74,3 +74,69 @@ document.addEventListener('keydown', (e) => {
     navToggle.focus();
   }
 });
+
+// ── Tab Navigation Logic ──
+const tabItems = document.querySelectorAll('.tab-item');
+
+tabItems.forEach(item => {
+  const btn = item.querySelector('.tab-btn');
+  
+  // Mobile/Touch: Klick zum Öffnen/Schließen
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = item.classList.contains('active');
+    
+    // Alle schließen
+    tabItems.forEach(other => other.classList.remove('active'));
+    
+    // Wenn nicht offen → öffnen
+    if (!isOpen) item.classList.add('active');
+  });
+});
+
+// Schließen bei Klick außerhalb
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.tab-item')) {
+    tabItems.forEach(item => item.classList.remove('active'));
+  }
+});
+
+// ESC zum Schließen
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    tabItems.forEach(item => item.classList.remove('active'));
+  }
+});
+
+// ── Tab Navigation Logic ──
+const tabItems = document.querySelectorAll('.tab-item');
+
+tabItems.forEach(item => {
+  const btn = item.querySelector('.tab-btn');
+  
+  // Mobile/Touch: Klick zum Öffnen/Schließen
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = item.classList.contains('active');
+    
+    // Alle schließen
+    tabItems.forEach(other => other.classList.remove('active'));
+    
+    // Wenn nicht offen → öffnen
+    if (!isOpen) item.classList.add('active');
+  });
+});
+
+// Schließen bei Klick außerhalb
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.tab-item')) {
+    tabItems.forEach(item => item.classList.remove('active'));
+  }
+});
+
+// ESC zum Schließen
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    tabItems.forEach(item => item.classList.remove('active'));
+  }
+});
