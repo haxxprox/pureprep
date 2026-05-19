@@ -33,9 +33,9 @@ body {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   padding-bottom: 60px;
-  position: relative;
+  position: relative; /* ← Wichtig für Pfeil-Positionierung */
+  overflow: visible;  /* ← Verhindert Abschneiden der Pfeile */
   z-index: 1;
-  overflow: visible !important; /* ← WICHTIG: Schneiden Pfeile nicht ab */
 }
 
 /* Paginierung fixieren */
@@ -48,8 +48,10 @@ body {
 
 /* Swiper Slide & Karte */
 .swiper-slide {
+  width: 100%;
   display: flex;
   justify-content: center;
+  /* width: 100% !important; ENTFERNT → Swiper setzt die Breite dynamisch */
 }
 
 /* Pfeile sichtbar & klickbar machen */
@@ -66,12 +68,16 @@ body {
   box-shadow: 0 2px 10px var(--shadow) !important;
   z-index: 10 !important;
   transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 .swiper-button-next { right: 10px !important; }
 .swiper-button-prev { left: 10px !important; }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
+  content: '' !important; /* ← Stellt Swiper-Icon sicher */
   font-size: 16px !important;
   font-weight: bold !important;
   color: var(--accent) !important;
@@ -85,13 +91,7 @@ body {
   color: #fff !important;
 }
 
-/* Paginierung fixieren */
-.swiper-pagination {
-  bottom: 14px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: auto !important;
-}
+/* Paginierung */
 .swiper-pagination-bullet {
   background: var(--text-secondary) !important;
   opacity: 0.4 !important;
@@ -139,13 +139,6 @@ body {
 }
 .product-card button:hover { background: var(--accent-hover); transform: scale(1.03); }
 .product-card button:active { transform: scale(0.98); }
-
-/* Swiper Controls */
-.swiper-button-next, .swiper-button-prev { color: var(--accent); }
-.swiper-button-next::after, .swiper-button-prev::after { font-size: 1.2rem; }
-.swiper-pagination { color: var(--text-secondary); }
-.swiper-pagination-bullet { background: var(--text-secondary); opacity: 0.4; width: 8px; height: 8px; }
-.swiper-pagination-bullet-active { background: var(--accent); opacity: 1; width: 20px; border-radius: 4px; transition: all 0.2s ease; }
 
 /* Produktbilder */
 .card-image {
