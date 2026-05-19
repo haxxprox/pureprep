@@ -17,7 +17,6 @@ body {
   background: var(--bg-primary); 
   color: var(--text-primary); 
   min-height: 100vh;
-  transition: background 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
 }
 
@@ -35,29 +34,24 @@ body {
 .shop-header { margin-bottom: 3.5rem; text-align: center; position: relative; z-index: 10; }
 
 /* ═══════════════════════════════════════════ */
-/* ── CUSTOM SLIDER (Flüssiger Loop) ── */
+/* ── SWIPER SLIDER FIXES ── */
 /* ═══════════════════════════════════════════ */
-.hero-slider { position: relative; z-index: 1; padding: 2rem 0; overflow: hidden; width: 100%; }
-.slider-track-wrapper { overflow: hidden; width: 100%; padding: 10px 0; position: relative; }
-.slider-track { display: flex; gap: 1.25rem; width: max-content; will-change: transform; }
-.slider-track.manual-scroll { transition: transform 0.4s ease; }
-.slider-fade-left, .slider-fade-right { position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
-.slider-fade-left { left: 0; background: linear-gradient(to right, var(--bg-primary), transparent); }
-.slider-fade-right { right: 0; background: linear-gradient(to left, var(--bg-primary), transparent); }
-
-.slider-nav-btn { 
-  position: absolute; top: 50%; transform: translateY(-50%); 
-  width: 48px; height: 48px; border-radius: 50%; 
-  background: rgba(15,15,26,0.85); border: 1px solid var(--border); 
-  color: var(--text); cursor: pointer; z-index: 10; 
-  display: flex; align-items: center; justify-content: center; 
-  font-size: 1.2rem; transition: all 0.3s; backdrop-filter: blur(10px); 
+#product-slider {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 60px;
+  position: relative;
+  overflow: hidden; /* Wichtig für sauberes Layout */
+  z-index: 1;
 }
-.slider-nav-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-50%) scale(1.1); box-shadow: 0 4px 20px rgba(47, 129, 247, 0.4); }
-.slider-nav-btn.prev { left: 15px; }
-.slider-nav-btn.next { right: 15px; }
 
-/* Produktkarte */
+/* Paginierung */
+.swiper-pagination { bottom: 14px !important; left: 50% !important; transform: translateX(-50%) !important; width: auto !important; }
+.swiper-pagination-bullet { background: var(--text-secondary) !important; opacity: 0.4 !important; width: 8px !important; height: 8px !important; }
+.swiper-pagination-bullet-active { background: var(--accent) !important; opacity: 1 !important; width: 20px !important; border-radius: 4px !important; }
+
+/* Slide & Karte */
+.swiper-slide { width: 100%; display: flex; justify-content: center; }
 .product-card {
   width: 100%; max-width: 300px; height: 300px; max-height: 300px;
   overflow: hidden; background: var(--bg-card); padding: 1.5rem;
@@ -76,6 +70,40 @@ body {
 .card-image { width: 100%; height: 150px; overflow: hidden; border-radius: 8px 8px 0 0; margin-bottom: 1rem; background: var(--bg-primary); display: flex; align-items: center; justify-content: center; }
 .card-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
 .product-card:hover .card-image img { transform: scale(1.05); }
+
+/* Pfeile (Swiper v11 CSS-Variablen) */
+.swiper-button-next, .swiper-button-prev {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: rgba(22, 27, 34, 0.85) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+  z-index: 10 !important;
+  transition: all 0.3s ease !important;
+  --swiper-navigation-size: 16px !important;
+  --swiper-navigation-color: var(--text-primary) !important;
+  backdrop-filter: blur(8px);
+}
+.swiper-button-next { right: 15px !important; }
+.swiper-button-prev { left: 15px !important; }
+.swiper-button-next:hover, .swiper-button-prev:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  --swiper-navigation-color: #fff !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: var(--text-primary) !important;
+}
+.swiper-button-next:hover::after, .swiper-button-prev:hover::after {
+  color: #fff !important;
+}
 
 /* Tab Navigation */
 .tab-navigation { margin-top: 3rem; position: relative; z-index: 10; }
