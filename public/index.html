@@ -18,27 +18,70 @@
     <div class="swiper-button-next"></div>
   </main>
 
-  <nav class="navbar">
-  <button class="nav-toggle" aria-label="Menü öffnen/schließen" aria-expanded="false">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
-  <div class="dropdown-menu" id="navDropdown" role="menu">
-    <a href="#" class="nav-link" role="menuitem">Startseite</a>
-    <a href="#" class="nav-link" role="menuitem">Produkte</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 1</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 2</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 3</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 4</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 5</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 6</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 7</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 8</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 9</a>
-    <a href="#" class="nav-link" role="menuitem">Kategorie 10</a>
+<header class="shop-header">
+  <h1>🛒 Mein Shop</h1>
+</header>
+
+<main id="product-slider" class="swiper mySwiper">
+  <div class="swiper-wrapper" id="swiper-wrapper"></div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</main>
+
+<nav class="tab-navigation" aria-label="Hauptnavigation">
+  <div class="tab-list">
+    <div class="tab-item" data-tab="products">
+      <button class="tab-btn">Produkte</button>
+      <div class="tab-panel" role="menu">
+        <a href="#" class="tab-link" role="menuitem">Elektronik</a>
+        <a href="#" class="tab-link" role="menuitem">Wohnen & Garten</a>
+        <a href="#" class="tab-link" role="menuitem">Sport & Freizeit</a>
+        <a href="#" class="tab-link" role="menuitem">Mode & Accessoires</a>
+        <a href="#" class="tab-link" role="menuitem">Spielzeug</a>
+        <a href="#" class="tab-link" role="menuitem">Bücher & Medien</a>
+        <a href="#" class="tab-link" role="menuitem">Lebensmittel</a>
+        <a href="#" class="tab-link" role="menuitem">Auto & Motorrad</a>
+        <a href="#" class="tab-link" role="menuitem">Gesundheit</a>
+        <a href="#" class="tab-link" role="menuitem">Feiertage & Geschenke</a>
+      </div>
+    </div>
+
+    <div class="tab-item" data-tab="categories">
+      <button class="tab-btn">Kategorien</button>
+      <div class="tab-panel" role="menu">
+        <a href="#" class="tab-link">Neuheiten</a>
+        <a href="#" class="tab-link">Bestseller</a>
+        <a href="#" class="tab-link">Sonderangebote</a>
+        <a href="#" class="tab-link">Rabattaktionen</a>
+        <a href="#" class="tab-link">Marken-A-Z</a>
+      </div>
+    </div>
+
+    <div class="tab-item" data-tab="offers">
+      <button class="tab-btn">Angebote</button>
+      <div class="tab-panel" role="menu">
+        <a href="#" class="tab-link">Flash Sale</a>
+        <a href="#" class="tab-link">Wochenend-Deal</a>
+        <a href="#" class="tab-link">Treueprogramm</a>
+        <a href="#" class="tab-link">Gutscheine</a>
+        <a href="#" class="tab-link">Versandkostenfrei</a>
+      </div>
+    </div>
+
+    <div class="tab-item" data-tab="support">
+      <button class="tab-btn">Support</button>
+      <div class="tab-panel" role="menu">
+        <a href="#" class="tab-link">FAQ</a>
+        <a href="#" class="tab-link">Versand & Rückgabe</a>
+        <a href="#" class="tab-link">Kontakt</a>
+        <a href="#" class="tab-link">AGB & Datenschutz</a>
+        <a href="#" class="tab-link">Größentabelle</a>
+      </div>
+    </div>
   </div>
 </nav>
+
 
 
   <!-- Swiper JS + App JS -->
