@@ -1,0 +1,10 @@
+{
+  "name": "shop-netlify",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev",
+    "start": "node netlify/functions/products.js"
+  },
+  "dependencies": {}
+}
