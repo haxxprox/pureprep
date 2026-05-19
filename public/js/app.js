@@ -42,6 +42,10 @@ async function loadProducts() {
         pagination: { el: '.swiper-pagination', clickable: true },
         observer: true,
         observeParents: true,
+        touchRatio: 1,
+        threshold: 10,
+        longSwipesRatio: 0.5,
+        shortSwipes: true,
         breakpoints: {
           640: { slidesPerView: 2, spaceBetween: 14 },
           1024: { slidesPerView: 3, spaceBetween: 18 },
@@ -265,11 +269,23 @@ tabItems.forEach(item => {
     if (!isOpen) item.classList.add('active');
   });
 });
+
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.tab-item')) tabItems.forEach(item => item.classList.remove('active'));
 });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') tabItems.forEach(item => item.classList.remove('active'));
+});
+
+// Mobile-Touch: Scroll im Panel verhindern, wenn nötig
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.tab-panel').forEach(panel => {
+    panel.addEventListener('touchmove', (e) => {
+      if (panel.scrollHeight > panel.clientHeight) {
+        e.stopPropagation();
+      }
+    }, { passive: true });
+  });
 });
 
 // ── INITIALISIERUNG ──
