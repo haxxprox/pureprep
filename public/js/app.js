@@ -20,7 +20,7 @@ async function loadProducts() {
           <div class="card-image"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23161b22%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 text-anchor=%22middle%22 fill=%22%238b949e%22 font-size=%2212%22>Kein Bild</text></svg>'"></div>
           <h3>${p.name}</h3>
           <p class="price">${p.price.toFixed(2)} €</p>
-          <button onclick="addToCart(${p.id})">In den Warenkorb</button>
+          <button class="add-to-cart-btn" data-product-id="${p.id}">In den Warenkorb</button>
         </div>`;
       swiperWrapper.appendChild(slide);
     });
@@ -48,22 +48,30 @@ function updateCartUI() {
   document.getElementById('cartTotal').textContent = `€${totalPrice.toFixed(2)}`;
   const cartItemsEl = document.getElementById('cartItems');
   if (cart.length === 0) cartItemsEl.innerHTML = `<div class="cart-empty"><div class="empty-icon">🛒</div><p>Dein Warenkorb ist leer</p></div>`;
-  else cartItemsEl.innerHTML = cart.map(item => `
+    else cartItemsEl.innerHTML = cart.map(item => `
     <div class="cart-item">
       <div class="cart-item-img"><img src="${item.image}" alt="${item.name}"></div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.name}</div>
         <div class="cart-item-price">€${item.price.toFixed(2)}</div>
         <div class="cart-item-qty">
-          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+          <button class="qty-btn qty-decrease" data-id="${item.id}">−</button>
           <span class="qty-num">${item.qty}</span>
-          <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+          <button class="qty-btn qty-increase" data-id="${item.id}">+</button>
         </div>
       </div>
-      <button class="cart-item-remove" onclick="removeFromCart(${item.id})">🗑️</button>
+      <button class="cart-item-remove" data-id="${item.id}">🗑️</button>
     </div>`).join('');
 }
-function addToCart(productId) { const product = products.find(p => p.id === productId); if (!product) return; const existing = cart.find(item => item.id === productId); if (existing) existing.qty++; else cart.push({ ...product, qty: 1 }); saveCart(); showToast(`✅ ${product.name} hinzugefügt!`); }
+function addToCart(productId) { 
+  const product = products.find(p => p.id === productId); 
+  if (!product) return; 
+  const existing = cart.find(item => item.id === productId); 
+  if (existing) existing.qty++; 
+  else cart.push({ ...product, qty: 1 }); 
+  saveCart(); 
+  showToast(`✅ ${product.name} hinzugefügt!`); 
+}
 function changeQty(productId, delta) { const item = cart.find(i => i.id === productId); if (item) { item.qty += delta; if (item.qty <= 0) removeFromCart(productId); else saveCart(); } }
 function removeFromCart(productId) { cart = cart.filter(item => item.id !== productId); saveCart(); }
 function checkAuth() { const authToggle = document.getElementById('authToggle'), userProfile = document.getElementById('userProfile'); if (currentUser) { authToggle.style.display = 'none'; userProfile.style.display = 'flex'; document.getElementById('userName').textContent = currentUser.name || currentUser.email; } else { authToggle.style.display = 'flex'; userProfile.style.display = 'none'; } }
@@ -113,5 +121,40 @@ function closeMobileMenu() { mobileMenuOverlay.classList.remove('open'); documen
 if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
 if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
 if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', (e) => { if (e.target === mobileMenuOverlay) closeMobileMenu(); });
+
+// 🔽 EVENT DELEGATION FÜR WARENKORB (UMGEHT MODULE-SCOPE & FUNKTIONIERT BEIDE DYNAMISCHEN & STATISCHEN KARTEN)
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.add-to-cart-btn');
+  if (btn) {
+    e.preventDefault();
+    const productId = parseInt(btn.dataset.productId);
+    if (productId && products.length > 0) {
+      addToCart(productId);
+    } else if (products.length === 0) {
+      showToast('⏳ Bitte warte kurz, Produkte werden geladen...');
+    }
+  }
+});
+
+// 🔽 EVENT DELEGATION FÜR WARENKORB (STÜCKZAHL & LÖSCHEN)
+document.addEventListener('click', (e) => {
+  const cartContainer = document.getElementById('cartItems');
+  if (!cartContainer || !cartContainer.contains(e.target)) return;
+
+  const qtyBtn = e.target.closest('.qty-btn');
+  const removeBtn = e.target.closest('.cart-item-remove');
+
+  if (qtyBtn) {
+    e.preventDefault();
+    const id = parseInt(qtyBtn.dataset.id);
+    const isIncrease = qtyBtn.classList.contains('qty-increase');
+    changeQty(id, isIncrease ? 1 : -1);
+  } else if (removeBtn) {
+    e.preventDefault();
+    const id = parseInt(removeBtn.dataset.id);
+    removeFromCart(id);
+  }
+});
+
 
 document.addEventListener('DOMContentLoaded', () => { loadProducts(); updateCartUI(); checkAuth(); });
