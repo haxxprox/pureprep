@@ -283,40 +283,53 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// 🔽 MOBILE HAMBURGER MENÜ
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 const mobileMenuClose = document.getElementById('mobileMenuClose');
-function openMobileMenu() { mobileMenuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeMobileMenu() { mobileMenuOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+function openMobileMenu() { 
+  mobileMenuOverlay.classList.add('open'); 
+  document.body.style.overflow = 'hidden'; 
+}
+function closeMobileMenu() { 
+  mobileMenuOverlay.classList.remove('open'); 
+  document.body.style.overflow = ''; 
+}
+
 if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
 if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
-if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', (e) => { if (e.target === mobileMenuOverlay) closeMobileMenu(); });
+if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', (e) => { 
+  if (e.target === mobileMenuOverlay) closeMobileMenu(); 
+});
 
-// 🔽 MOBILE UNTERMENÜ TOGGLE (NUR ≤ 768px)
+// 🔽 MOBILE UNTERMENÜ (AKKORDEON) NUR ≤ 768px
 document.addEventListener('DOMContentLoaded', () => {
   const dropdownWrappers = document.querySelectorAll('.dropdown-wrapper');
-
+  
   dropdownWrappers.forEach(wrapper => {
     const link = wrapper.querySelector('.tab-link');
     const subPanel = wrapper.querySelector('.sub-panel');
-
+    
     if (link && subPanel) {
       link.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
           e.preventDefault();
           e.stopPropagation();
-
+          
           const isActive = wrapper.classList.contains('active');
-
+          
+          // Andere offene Untermenüs schließen
           dropdownWrappers.forEach(w => {
-            w.classList.remove('active');
-            w.querySelector('.sub-panel')?.classList.remove('open');
+            if (w !== wrapper) {
+              w.classList.remove('active');
+              w.querySelector('.sub-panel')?.classList.remove('open');
+            }
           });
-
-          if (!isActive) {
-            wrapper.classList.add('active');
-            subPanel.classList.add('open');
-          }
+          
+          // Aktuelles umschalten
+          wrapper.classList.toggle('active');
+          subPanel.classList.toggle('open');
         }
       });
     }
