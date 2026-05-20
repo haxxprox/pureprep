@@ -13,12 +13,10 @@ function deleteCartCookie() {
   document.cookie = 'pureprep_cart=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 }
 
-// Globale Variable für Produkte & Warenkorb (Cookie-basiert)
 let products = [];
 let cart = getCartCookie();
 let currentUser = JSON.parse(localStorage.getItem('pureprep_user')) || null;
 
-// 🔽 PRODUKTE LADEN & SWIPER INITIALISIEREN
 async function loadProducts() {
   const swiperWrapper = document.getElementById('swiper-wrapper');
   const swiperContainer = document.getElementById('product-slider');
@@ -41,7 +39,7 @@ async function loadProducts() {
       swiperWrapper.appendChild(slide);
     });
     if (!swiperContainer.classList.contains('swiper-initialized')) {
-      new Swiper(swiperContainer, {
+      const swiper = new Swiper(swiperContainer, {
         slidesPerView: 1, spaceBetween: 10, loop: true, loopMode: 'flip',
         autoplay: { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true },
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
@@ -55,7 +53,6 @@ async function loadProducts() {
   } catch (err) { swiperContainer.innerHTML = `<p style="color:#f85149; text-align:center; padding:3rem;">Fehler beim Laden: ${err.message}</p>`; }
 }
 
-// 🔽 WARENKORB LOGIK
 function saveCart() { setCartCookie(cart); updateCartUI(); }
 
 function updateCartUI() {
@@ -64,7 +61,7 @@ function updateCartUI() {
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   badge.textContent = totalItems; badge.classList.toggle('show', totalItems > 0);
   document.getElementById('cartTotal').textContent = `€${totalPrice.toFixed(2)}`;
-  
+
   const cartItemsEl = document.getElementById('cartItems');
   if (cart.length === 0) {
     cartItemsEl.innerHTML = `<div class="cart-empty"><div class="empty-icon">🛒</div><p>Dein Warenkorb ist leer</p></div>`;
@@ -110,7 +107,6 @@ function removeFromCart(productId) {
   saveCart();
 }
 
-// 🔽 AUTH LOGIK
 function checkAuth() {
   const authToggle = document.getElementById('authToggle');
   const userProfile = document.getElementById('userProfile');
@@ -153,12 +149,12 @@ function handleAuthSubmit(e) {
   const name = document.getElementById('authName').value;
   const errorEl = document.getElementById('authError');
   const successEl = document.getElementById('authSuccess');
-  
+
   errorEl.style.display = 'none';
   successEl.style.display = 'none';
 
   if (!email || !password) { errorEl.textContent = 'Bitte alle Pflichtfelder ausfüllen.'; errorEl.style.display = 'block'; return; }
-  
+
   if (isRegister) {
     if (!name) { errorEl.textContent = 'Bitte gib deinen Namen ein.'; errorEl.style.display = 'block'; return; }
     const users = JSON.parse(localStorage.getItem('pureprep_users') || '[]');
@@ -190,7 +186,6 @@ function logout() {
   showToast('👋 Erfolgreich abgemeldet.');
 }
 
-// 🔽 TOAST BENACHRICHTIGUNG
 function showToast(message) {
   let container = document.getElementById('toastContainer');
   if (!container) {
@@ -206,9 +201,7 @@ function showToast(message) {
   setTimeout(() => toast.remove(), 3000);
 }
 
-// 🔽 EVENT DELEGATION (UMGEHT MODULE-SCOPE & FUNKTIONIERT BEIDE DYNAMISCHEN & STATISCHEN ELEMENTEN)
 document.addEventListener('click', (e) => {
-  // Warenkorb öffnen/schließen
   if (e.target.closest('#cartToggle')) {
     document.getElementById('cartOverlay').classList.add('open');
     document.getElementById('cartSidebar').classList.add('open');
@@ -218,8 +211,6 @@ document.addEventListener('click', (e) => {
     closeCart();
     return;
   }
-
-  // Auth Modal öffnen/schließen
   if (e.target.closest('#authToggle')) {
     showAuthModal();
     return;
@@ -228,8 +219,6 @@ document.addEventListener('click', (e) => {
     closeAuthModal();
     return;
   }
-
-  // Produkte hinzufügen (Grid & Swiper)
   const addToCartBtn = e.target.closest('.add-to-cart-btn');
   if (addToCartBtn) {
     e.preventDefault();
@@ -241,13 +230,10 @@ document.addEventListener('click', (e) => {
     }
     return;
   }
-
-  // Warenkorb-Interaktionen (Stückzahl & Löschen)
   const cartContainer = document.getElementById('cartItems');
   if (cartContainer && cartContainer.contains(e.target)) {
     const qtyBtn = e.target.closest('.qty-btn');
     const removeBtn = e.target.closest('.cart-item-remove');
-
     if (qtyBtn) {
       e.preventDefault();
       const id = parseInt(qtyBtn.dataset.id);
@@ -266,18 +252,16 @@ function closeCart() {
   document.getElementById('cartSidebar').classList.remove('open');
 }
 
-// 🔽 CHECKOUT
 document.getElementById('checkoutBtn').addEventListener('click', () => {
   if (cart.length === 0) { showToast('⚠️ Warenkorb ist leer!'); return; }
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   showToast(`🎉 Bestellung über €${total.toFixed(2)} wird verarbeitet! (Demo)`);
   cart = [];
   saveCart();
-  deleteCartCookie(); // Cookie nach "Bestellung" sicher löschen
+  deleteCartCookie();
   closeCart();
 });
 
-// 🔽 TABS & MOBILE MENU
 const tabItems = document.querySelectorAll('.tab-item');
 tabItems.forEach(item => {
   const btn = item.querySelector('.tab-btn');
@@ -308,7 +292,37 @@ if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
 if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
 if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', (e) => { if (e.target === mobileMenuOverlay) closeMobileMenu(); });
 
-// 🔽 INITIALISIERUNG
+// 🔽 MOBILE UNTERMENÜ TOGGLE (NUR ≤ 768px)
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownWrappers = document.querySelectorAll('.dropdown-wrapper');
+
+  dropdownWrappers.forEach(wrapper => {
+    const link = wrapper.querySelector('.tab-link');
+    const subPanel = wrapper.querySelector('.sub-panel');
+
+    if (link && subPanel) {
+      link.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const isActive = wrapper.classList.contains('active');
+
+          dropdownWrappers.forEach(w => {
+            w.classList.remove('active');
+            w.querySelector('.sub-panel')?.classList.remove('open');
+          });
+
+          if (!isActive) {
+            wrapper.classList.add('active');
+            subPanel.classList.add('open');
+          }
+        }
+      });
+    }
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   loadProducts();
   updateCartUI();
