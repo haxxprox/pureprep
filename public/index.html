@@ -2,7 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d1117">
   <title>PurePreP</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="/css/style.css">
@@ -12,7 +13,6 @@
 
   <header class="shop-header">
     <h1>🛒 PurePreP</h1>
-    <!-- Neue Nav-Actions für Warenkorb & Login -->
     <div class="nav-actions">
       <button class="cart-btn" id="cartToggle" aria-label="Warenkorb">🛒<span class="cart-badge" id="cartBadge">0</span></button>
       <button class="auth-btn" id="authToggle" aria-label="Konto">👤</button>
@@ -77,6 +77,92 @@
       </div>
     </div>
   </nav>
+
+  <!-- 🔽 NEU: Produkt-Grid (Platzhalter) -->
+  <section class="product-grid-section" id="product-grid-section">
+    <h2 class="section-title">Empfohlene Produkte</h2>
+    <div class="product-grid" id="product-grid">
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Platzhalter 1"></div>
+        <h3>Platzhalter Produkt 1</h3>
+        <p class="price">49,99 €</p>
+        <button onclick="addToCart(101)">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Platzhalter 2"></div>
+        <h3>Platzhalter Produkt 2</h3>
+        <p class="price">89,50 €</p>
+        <button onclick="addToCart(102)">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&q=80" alt="Platzhalter 3"></div>
+        <h3>Platzhalter Produkt 3</h3>
+        <p class="price">129,99 €</p>
+        <button onclick="addToCart(103)">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Platzhalter 4"></div>
+        <h3>Platzhalter Produkt 4</h3>
+        <p class="price">299,00 €</p>
+        <button onclick="addToCart(104)">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Platzhalter 4"></div>
+        <h3>Platzhalter Produkt 5</h3>
+        <p class="price">299,00 €</p>
+        <button onclick="addToCart(104)">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Platzhalter 4"></div>
+        <h3>Platzhalter Produkt 6</h3>
+        <p class="price">299,00 €</p>
+        <button onclick="addToCart(104)">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Platzhalter 2"></div>
+        <h3>Platzhalter Produkt 7</h3>
+        <p class="price">89,50 €</p>
+        <button onclick="addToCart(102)">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&q=80" alt="Platzhalter 3"></div>
+        <h3>Platzhalter Produkt 8</h3>
+        <p class="price">129,99 €</p>
+        <button onclick="addToCart(103)">In den Warenkorb</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔽 NEU: Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>PurePreP</h4>
+        <p>Dein Shop für Premium-Produkte. Qualität trifft auf modernes Design.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Navigation</h4>
+        <a href="#">Home</a>
+        <a href="#">Produkte</a>
+        <a href="#">Kategorien</a>
+      </div>
+      <div class="footer-section">
+        <h4>Service</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Versand & Rückgabe</a>
+        <a href="#">Kontakt</a>
+      </div>
+      <div class="footer-section">
+        <h4>Rechtliches</h4>
+        <a href="#">AGB</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 PurePreP. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
 
   <!-- Warenkorb Sidebar -->
   <div class="cart-overlay" id="cartOverlay"></div>
