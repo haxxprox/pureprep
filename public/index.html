@@ -11,25 +11,11 @@
 <body>
   <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
 
+  <!-- 🔽 HEADER: Logo | Desktop-Navi (horizontal) | Icons + Hamburger -->
   <header class="shop-header">
-    <h1>🛒 PurePreP</h1>
-    <div class="nav-actions">
-      <button class="cart-btn" id="cartToggle" aria-label="Warenkorb">🛒<span class="cart-badge" id="cartBadge">0</span></button>
-      <button class="auth-btn" id="authToggle" aria-label="Konto">👤</button>
-    </div>
-  </header>
-
-  <!-- Swiper Container -->
-  <main id="product-slider" class="swiper mySwiper">
-    <div class="swiper-wrapper" id="swiper-wrapper"></div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </main>
-
-  <!-- Tab Navigation -->
-  <nav class="tab-navigation" aria-label="Hauptnavigation">
-    <div class="tab-list">
+    <div class="header-logo">🛒 PurePreP</div>
+    
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
       <div class="tab-item" data-tab="products">
         <button class="tab-btn">Produkte</button>
         <div class="tab-panel" role="menu">
@@ -75,65 +61,81 @@
           <a href="#" class="tab-link">Größentabelle</a>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- 🔽 NEU: Produkt-Grid (Platzhalter) -->
+    <div class="header-actions">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">☰</button>
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartToggle" aria-label="Warenkorb">🛒<span class="cart-badge" id="cartBadge">0</span></button>
+        <button class="auth-btn" id="authToggle" aria-label="Konto">👤</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 🔽 MOBILE OVERLAY MENU -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <span>Menü</span>
+        <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+      </div>
+      <div class="mobile-menu-list">
+        <a href="#" class="mobile-menu-item">📦 Produkte</a>
+        <div class="mobile-submenu">
+          <a href="#">Elektronik</a><a href="#">Wohnen & Garten</a>
+          <a href="#">Sport & Freizeit</a><a href="#">Mode</a>
+        </div>
+        <a href="#" class="mobile-menu-item">🏷️ Kategorien</a>
+        <div class="mobile-submenu">
+          <a href="#">Neuheiten</a><a href="#">Bestseller</a>
+          <a href="#">Angebote</a><a href="#">Rabattaktionen</a>
+        </div>
+        <a href="#" class="mobile-menu-item">💰 Angebote</a>
+        <a href="#" class="mobile-menu-item">🎧 Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Swiper Container -->
+  <main id="product-slider" class="swiper mySwiper">
+    <div class="swiper-wrapper" id="swiper-wrapper"></div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </main>
+
+  <!-- Produkt-Grid -->
   <section class="product-grid-section" id="product-grid-section">
     <h2 class="section-title">Empfohlene Produkte</h2>
     <div class="product-grid" id="product-grid">
       <div class="product-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Platzhalter 1"></div>
-        <h3>Platzhalter Produkt 1</h3>
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Produkt 1"></div>
+        <h3>Produkt Beispiel 1</h3>
         <p class="price">49,99 €</p>
         <button onclick="addToCart(101)">In den Warenkorb</button>
       </div>
       <div class="product-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Platzhalter 2"></div>
-        <h3>Platzhalter Produkt 2</h3>
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Produkt 2"></div>
+        <h3>Produkt Beispiel 2</h3>
         <p class="price">89,50 €</p>
         <button onclick="addToCart(102)">In den Warenkorb</button>
       </div>
       <div class="product-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&q=80" alt="Platzhalter 3"></div>
-        <h3>Platzhalter Produkt 3</h3>
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&q=80" alt="Produkt 3"></div>
+        <h3>Produkt Beispiel 3</h3>
         <p class="price">129,99 €</p>
         <button onclick="addToCart(103)">In den Warenkorb</button>
       </div>
       <div class="product-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Platzhalter 4"></div>
-        <h3>Platzhalter Produkt 4</h3>
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Produkt 4"></div>
+        <h3>Produkt Beispiel 4</h3>
         <p class="price">299,00 €</p>
         <button onclick="addToCart(104)">In den Warenkorb</button>
-      </div>
-      <div class="product-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Platzhalter 4"></div>
-        <h3>Platzhalter Produkt 5</h3>
-        <p class="price">299,00 €</p>
-        <button onclick="addToCart(104)">In den Warenkorb</button>
-      </div>
-      <div class="product-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Platzhalter 4"></div>
-        <h3>Platzhalter Produkt 6</h3>
-        <p class="price">299,00 €</p>
-        <button onclick="addToCart(104)">In den Warenkorb</button>
-      </div>
-      <div class="product-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Platzhalter 2"></div>
-        <h3>Platzhalter Produkt 7</h3>
-        <p class="price">89,50 €</p>
-        <button onclick="addToCart(102)">In den Warenkorb</button>
-      </div>
-      <div class="product-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&q=80" alt="Platzhalter 3"></div>
-        <h3>Platzhalter Produkt 8</h3>
-        <p class="price">129,99 €</p>
-        <button onclick="addToCart(103)">In den Warenkorb</button>
       </div>
     </div>
   </section>
 
-  <!-- 🔽 NEU: Footer -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-section">
@@ -142,46 +144,34 @@
       </div>
       <div class="footer-section">
         <h4>Navigation</h4>
-        <a href="#">Home</a>
-        <a href="#">Produkte</a>
-        <a href="#">Kategorien</a>
+        <a href="#">Home</a><a href="#">Produkte</a><a href="#">Kategorien</a>
       </div>
       <div class="footer-section">
         <h4>Service</h4>
-        <a href="#">FAQ</a>
-        <a href="#">Versand & Rückgabe</a>
-        <a href="#">Kontakt</a>
+        <a href="#">FAQ</a><a href="#">Versand & Rückgabe</a><a href="#">Kontakt</a>
       </div>
       <div class="footer-section">
         <h4>Rechtliches</h4>
-        <a href="#">AGB</a>
-        <a href="#">Datenschutz</a>
-        <a href="#">Impressum</a>
+        <a href="#">AGB</a><a href="#">Datenschutz</a><a href="#">Impressum</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 PurePreP. Alle Rechte vorbehalten.</p>
+      <p>&copy; 2024 PurePreP. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
 
   <!-- Warenkorb Sidebar -->
   <div class="cart-overlay" id="cartOverlay"></div>
   <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-      <h3>🛒 Warenkorb</h3>
-      <button class="cart-close" id="cartClose">✕</button>
-    </div>
+    <div class="cart-header"><h3>🛒 Warenkorb</h3><button class="cart-close" id="cartClose">✕</button></div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-footer">
-      <div class="cart-total">
-        <span class="cart-total-label">Gesamt</span>
-        <span class="cart-total-price" id="cartTotal">€0.00</span>
-      </div>
+      <div class="cart-total"><span class="cart-total-label">Gesamt</span><span class="cart-total-price" id="cartTotal">€0.00</span></div>
       <button class="checkout-btn" id="checkoutBtn">Zur Kasse →</button>
     </div>
   </div>
 
-  <!-- Kunden-Login / Registrierung Modal -->
+  <!-- Auth Modal -->
   <div class="auth-overlay" id="authOverlay"></div>
   <div class="auth-modal" id="authModal">
     <div class="auth-container">
@@ -191,18 +181,9 @@
         <button class="auth-tab" data-tab="register">Registrieren</button>
       </div>
       <form id="authForm">
-        <div class="form-group" id="nameField" style="display:none;">
-          <label>Vor- und Nachname</label>
-          <input type="text" id="authName" placeholder="Max Mustermann">
-        </div>
-        <div class="form-group">
-          <label>E-Mail</label>
-          <input type="email" id="authEmail" placeholder="name@beispiel.de" required>
-        </div>
-        <div class="form-group">
-          <label>Passwort</label>
-          <input type="password" id="authPassword" placeholder="••••••••" required>
-        </div>
+        <div class="form-group" id="nameField" style="display:none;"><label>Vor- und Nachname</label><input type="text" id="authName" placeholder="Max Mustermann"></div>
+        <div class="form-group"><label>E-Mail</label><input type="email" id="authEmail" placeholder="name@beispiel.de" required></div>
+        <div class="form-group"><label>Passwort</label><input type="password" id="authPassword" placeholder="••••••••" required></div>
         <button type="submit" class="auth-submit-btn" id="authSubmitBtn">Einloggen</button>
       </form>
       <div class="auth-error" id="authError"></div>
@@ -210,7 +191,6 @@
     </div>
   </div>
 
-  <!-- Benutzerprofil (wird nach Login angezeigt) -->
   <div class="user-profile" id="userProfile" style="display:none;">
     <span id="userName">Gast</span>
     <button class="logout-btn" id="logoutBtn">Abmelden</button>
