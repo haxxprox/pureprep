@@ -237,27 +237,13 @@ body {
 .mobile-submenu a { font-size: 1rem; color: var(--text-secondary); text-decoration: none; }
 .mobile-submenu a:hover { color: var(--accent); }
 
-/* Mobile Submenu Accordions - KORREKTUR: Strikt kollabiert, kein Platzverschwendung */
+/* Mobile Submenu Accordions */
 .mobile-submenu-wrapper { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.5rem; }
 .mobile-submenu-toggle { font-size: 0.95rem; color: var(--text-secondary); padding: 0.5rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; }
 .mobile-submenu-toggle::after { content: '▸'; transition: transform 0.2s; font-size: 1.1rem; }
 .mobile-submenu-wrapper.active .mobile-submenu-toggle::after { transform: rotate(90deg); }
-.mobile-submenu-list {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease, border 0.3s ease;
-  padding-left: 0;
-  border-left: none;
-  opacity: 0;
-  pointer-events: none;
-}
-.mobile-submenu-wrapper.active .mobile-submenu-list {
-  max-height: 500px;
-  padding-left: 0.75rem;
-  border-left: 2px solid var(--border);
-  opacity: 1;
-  pointer-events: auto;
-}
+.mobile-submenu-list { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-left: 0.75rem; border-left: 2px solid var(--border); }
+.mobile-submenu-wrapper.active .mobile-submenu-list { max-height: 300px; }
 .mobile-submenu-list a { font-size: 0.9rem; color: var(--text-secondary); text-decoration: none; padding: 0.4rem 0; display: block; }
 .mobile-submenu-list a:hover { color: var(--accent); }
 .mobile-submenu-link { font-size: 0.95rem; color: var(--text-secondary); text-decoration: none; padding: 0.5rem 0; display: block; }
