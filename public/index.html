@@ -1,4 +1,98 @@
-      <div class="mobile-menu-list">
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d1117">
+  <title>PurePreP</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+  <header class="shop-header">
+    <div class="header-logo">🛒 PurePreP 🛒</div>
+    
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      <div class="tab-item" data-tab="products">
+        <button class="tab-btn">Produkte</button>
+        <div class="tab-panel" role="menu">
+          <div class="dropdown-wrapper">
+            <a href="#" class="tab-link">3D Druck ▸</a>
+            <div class="sub-panel">
+              <a href="#" class="tab-link">FDM Filament</a>
+              <a href="#" class="tab-link">SLA/Resin</a>
+              <a href="#" class="tab-link">3D Drucker</a>
+              <a href="#" class="tab-link">Druckzubehör</a>
+            </div>
+          </div>
+          <div class="dropdown-wrapper">
+            <a href="#" class="tab-link">Simracing ▸</a>
+            <div class="sub-panel">
+              <a href="#" class="tab-link">Lenkräder</a>
+              <a href="#" class="tab-link">Pedalgruppen</a>
+              <a href="#" class="tab-link">Simsitze</a>
+              <a href="#" class="tab-link">Shifter & Clutch</a>
+            </div>
+          </div>
+          <a href="#" class="tab-link">Zubehör</a>
+          <a href="#" class="tab-link">Mode & Accessoires</a>
+          <a href="#" class="tab-link">Spielzeug</a>
+          <a href="#" class="tab-link">Bücher & Medien</a>
+          <a href="#" class="tab-link">Lebensmittel</a>
+          <a href="#" class="tab-link">Auto & Motorrad</a>
+          <a href="#" class="tab-link">Gesundheit</a>
+          <a href="#" class="tab-link">Feiertage & Geschenke</a>
+        </div>
+      </div>
+      <div class="tab-item" data-tab="categories">
+        <button class="tab-btn">Kategorien</button>
+        <div class="tab-panel" role="menu">
+          <a href="#" class="tab-link">Neuheiten</a>
+          <a href="#" class="tab-link">Bestseller</a>
+          <a href="#" class="tab-link">Sonderangebote</a>
+          <a href="#" class="tab-link">Rabattaktionen</a>          
+        </div>
+      </div>
+      <div class="tab-item" data-tab="offers">
+        <button class="tab-btn">Angebote</button>
+        <div class="tab-panel" role="menu">
+          <a href="#" class="tab-link">Flash Sale</a>
+          <a href="#" class="tab-link">Wochenend-Deal</a>
+          <a href="#" class="tab-link">Treueprogramm</a>
+          <a href="#" class="tab-link">Gutscheine</a>
+          <a href="#" class="tab-link">Versandkostenfrei</a>
+        </div>
+      </div>
+      <div class="tab-item" data-tab="support">
+        <button class="tab-btn">Support</button>
+        <div class="tab-panel" role="menu">
+          <a href="#" class="tab-link">FAQ</a>
+          <a href="#" class="tab-link">Versand & Rückgabe</a>
+          <a href="#" class="tab-link">Kontakt</a>
+          <a href="#" class="tab-link">AGB & Datenschutz</a>          
+        </div>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">☰</button>
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartToggle" aria-label="Warenkorb">🛒<span class="cart-badge" id="cartBadge">0</span></button>
+        <button class="auth-btn" id="authToggle" aria-label="Konto">👤</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 🔽 MOBILE OVERLAY MENU (AKTUALISIERT) -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <span>Menü</span>
+        <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+      </div>
+            <div class="mobile-menu-list">
         <div class="mobile-submenu-wrapper">
           <span class="mobile-submenu-toggle">📦 Produkte ▸</span>
           <div class="mobile-submenu-list">
@@ -59,3 +153,120 @@
           </div>
         </div>
       </div>
+
+        <!-- ---------------------------------------- -->
+      </div>
+    </div>
+  </div>
+
+  <main id="product-slider" class="swiper mySwiper">
+    <div class="swiper-wrapper" id="swiper-wrapper"></div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </main>
+
+  <section class="product-grid-section" id="product-grid-section">
+    <h2 class="section-title">Empfohlene Produkte</h2>
+    <div class="product-grid" id="product-grid">
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Produkt 1"></div>
+        <h3>Produkt Beispiel 1</h3>
+        <p class="price">49,99 €</p>
+        <button class="add-to-cart-btn" data-product-id="1">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Produkt 2"></div>
+        <h3>Produkt Beispiel 2</h3>
+        <p class="price">89,50 €</p>
+        <button class="add-to-cart-btn" data-product-id="2">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&q=80" alt="Produkt 3"></div>
+        <h3>Produkt Beispiel 3</h3>
+        <p class="price">129,99 €</p>
+        <button class="add-to-cart-btn" data-product-id="3">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Produkt 4"></div>
+        <h3>Produkt Beispiel 4</h3>
+        <p class="price">299,00 €</p>
+        <button class="add-to-cart-btn" data-product-id="4">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&q=80" alt="PurePreP"></div>
+        <h3>PurePreP</h3>
+        <p class="price">29,99 €</p>
+        <button class="add-to-cart-btn" data-product-id="5">In den Warenkorb</button>
+      </div>
+      <div class="product-card">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Ersatz Röhrchen"></div>
+        <h3>Ersatz Röhrchen</h3>
+        <p class="price">4,99 €</p>
+        <button class="add-to-cart-btn" data-product-id="6">In den Warenkorb</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>PurePreP</h4>
+        <p>Dein Shop für Premium-Produkte. Qualität trifft auf modernes Design.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Navigation</h4>
+        <a href="#">Home</a><a href="#">Produkte</a><a href="#">Kategorien</a>
+      </div>
+      <div class="footer-section">
+        <h4>Service</h4>
+        <a href="#">FAQ</a><a href="#">Versand & Rückgabe</a><a href="#">Kontakt</a>
+      </div>
+      <div class="footer-section">
+        <h4>Rechtliches</h4>
+        <a href="#">AGB</a><a href="#">Datenschutz</a><a href="#">Impressum</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 PurePreP. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>🛒 Warenkorb</h3><button class="cart-close" id="cartClose">✕</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span class="cart-total-label">Gesamt</span><span class="cart-total-price" id="cartTotal">€0.00</span></div>
+      <button class="checkout-btn" id="checkoutBtn">Zur Kasse →</button>
+    </div>
+  </div>
+
+  <div class="auth-overlay" id="authOverlay"></div>
+  <div class="auth-modal" id="authModal">
+    <div class="auth-container">
+      <button class="auth-close" id="authClose">✕</button>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Einloggen</button>
+        <button class="auth-tab" data-tab="register">Registrieren</button>
+      </div>
+      <form id="authForm">
+        <div class="form-group" id="nameField" style="display:none;"><label>Vor- und Nachname</label><input type="text" id="authName" placeholder="Max Mustermann"></div>
+        <div class="form-group"><label>E-Mail</label><input type="email" id="authEmail" placeholder="name@beispiel.de" required></div>
+        <div class="form-group"><label>Passwort</label><input type="password" id="authPassword" placeholder="••••••••" required></div>
+        <button type="submit" class="auth-submit-btn" id="authSubmitBtn">Einloggen</button>
+      </form>
+      <div class="auth-error" id="authError"></div>
+      <div class="auth-success" id="authSuccess"></div>
+    </div>
+  </div>
+
+  <div class="user-profile" id="userProfile" style="display:none;">
+    <span id="userName">Gast</span>
+    <button class="logout-btn" id="logoutBtn">Abmelden</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
